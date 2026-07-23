@@ -20,3 +20,6 @@ print(sell_signals.head(50))
 
 data['returns'] = data['Close'].pct_change()
 data['strategy_returns'] = data['returns'] * data['signal'].shift(1)
+
+data['cumulative_returns'] = (1 + data['strategy_returns']).cumprod()
+print("Фінальна дохідність стратегії:", data['cumulative_returns'].iloc[-1])
