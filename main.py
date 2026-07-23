@@ -31,3 +31,10 @@ num_trades = len(buy_signals) + len(sell_signals)
 print(f"Дохідність стратегії: {total_return_strategy:.2%}")
 print(f"Дохідність Buy&Hold: {total_return_bh:.2%}")
 print(f"Кількість угод: {num_trades}")
+
+
+plt.figure(figsize=(14, 7))
+plt.plot(data.index, data['Close'], label='Ціна закриття', alpha=0.6)
+plt.plot(data.index, data['SMA_Short'], label='SMA 20', alpha=0.8)
+plt.plot(data.index, data['SMA_Long'], label='SMA 50', alpha=0.8)
+plt.show()
