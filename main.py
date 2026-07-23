@@ -24,5 +24,10 @@ data['strategy_returns'] = data['returns'] * data['signal'].shift(1)
 data['cumulative_returns'] = (1 + data['strategy_returns']).cumprod()
 data['buy_hold_returns'] = (1 + data['returns']).cumprod()
 
-print("Стратегія:", data['cumulative_returns'].iloc[-1])
-print("Buy & Hold:", data['buy_hold_returns'].iloc[-1])
+total_return_strategy = data['cumulative_returns'].iloc[-1] - 1
+total_return_bh = data['buy_hold_returns'].iloc[-1] - 1
+num_trades = len(buy_signals) + len(sell_signals)
+
+print(f"Дохідність стратегії: {total_return_strategy:.2%}")
+print(f"Дохідність Buy&Hold: {total_return_bh:.2%}")
+print(f"Кількість угод: {num_trades}")
